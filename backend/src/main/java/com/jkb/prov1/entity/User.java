@@ -35,7 +35,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     @Builder.Default
     @ToString.Exclude
-    private List<Comment> commentList = new ArrayList<>();;
+    private List<Comment> commentList = new ArrayList<>();
 
     public void setName(String name)  {
         this.name = name;
