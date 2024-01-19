@@ -18,4 +18,16 @@ public class Info {
     public static Info init() {
         return new Info(0L, 0L, 0L);
     }
+
+    public void updateView() {
+        this.view += 1;
+    }
+
+    public void updateGood() {
+        this.good += 1;
+    }
+
+    public void updateBad() {
+        this.bad += 1;
+    }
 }

@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<Long> saveUser(@RequestBody UserDto userDto) {
         Long id = userService.saveUser(userDto);
         log.info("유저 저장 완료 ");
         return ResponseEntity.ok(id);
     }
 
+    @PostMapping
     public ResponseEntity<Boolean> loginUser(@RequestBody UserDto userDto) {
         boolean login = userService.loginUser(userDto);
         return ResponseEntity.ok(login);

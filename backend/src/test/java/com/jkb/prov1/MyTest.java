@@ -16,6 +16,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest
 public class MyTest {
     @Autowired
@@ -65,7 +67,11 @@ public class MyTest {
 
     @Test
     @Transactional
+    @Rollback(false)
     void ctest2() {
+        postRepository.updateGoodOrBadPoint(1L);
+        assertThat(5).isEqualTo(5);
+
     }
 
 }

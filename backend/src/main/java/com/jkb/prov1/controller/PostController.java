@@ -2,6 +2,7 @@ package com.jkb.prov1.controller;
 
 import com.jkb.prov1.dto.PostRequestDto;
 import com.jkb.prov1.dto.PostResponseDto;
+import com.jkb.prov1.dto.RecommendStatusDto;
 import com.jkb.prov1.dto.ViewPostDto;
 import com.jkb.prov1.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -39,7 +40,6 @@ public class PostController {
         return ResponseEntity.ok(posts);
     }
 
-
     @GetMapping
     public ResponseEntity<Page<PostResponseDto>> findAll(Pageable pageable) {
         Page<PostResponseDto> posts = postService.findAll(pageable);
@@ -55,6 +55,12 @@ public class PostController {
     @PutMapping
     public ResponseEntity<Void> updatePost(@RequestParam Long postId, @RequestBody PostRequestDto postRequestDto) {
         postService.updatePost(postId, postRequestDto);
+        return ResponseEntity.ok().build();
+    }
+
+    @PatchMapping
+    public ResponseEntity<Void> recommendPost(@RequestBody RecommendStatusDto recommendStatusDto) {
+        postService.recommendPost(recommendStatusDto);
         return ResponseEntity.ok().build();
     }
 

@@ -1,6 +1,5 @@
 package com.jkb.prov1.dto;
 
-import com.jkb.prov1.entity.Info;
 import com.jkb.prov1.entity.Post;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -17,11 +16,11 @@ public class PostResponseDto {
     private Long postId;
     private String title;
     private String text;
-    private Info info;
+    private Long view;
 
     public static PostResponseDto from(Post post) {
         return new PostResponseDto(
-                post.getUser().getName(), post.getId(), post.getTitle(), post.getText(), post.getInfo()
+                post.getUser().getName(), post.getId(), post.getTitle(), post.getText(), post.getInfo().getView()
         );
     }
 

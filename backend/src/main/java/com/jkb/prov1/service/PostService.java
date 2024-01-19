@@ -2,6 +2,7 @@ package com.jkb.prov1.service;
 
 import com.jkb.prov1.dto.PostRequestDto;
 import com.jkb.prov1.dto.PostResponseDto;
+import com.jkb.prov1.dto.RecommendStatusDto;
 import com.jkb.prov1.dto.ViewPostDto;
 import com.jkb.prov1.entity.Info;
 import com.jkb.prov1.entity.Post;
@@ -61,9 +62,9 @@ public class PostService {
         return new PageImpl<>(postResponseDto, pageable, postPage.getTotalElements());
     }
 
-    @Transactional(readOnly = true)
     public ViewPostDto ViewPost(Long postId) {
         Post post = findByPostId(postId);
+        post.getInfo().updateView();
         return ViewPostDto.from(post);
     }
 
@@ -71,6 +72,14 @@ public class PostService {
         Post post = findByPostId(postId);
         post.update(postRequestDto.getTitle(),
                 postRequestDto.getText());
+    }
+
+    public void recommendPost(RecommendStatusDto recommendStatusDto) {
+        Post post = findByPostId(recommendStatusDto.getPostId());
+        if(recommendStatusDto.isRecommend())
+            post.getInfo().updateGood();
+        else post.getInfo().updateBad();
+
     }
 
     public void deletePost(Long postId) {
