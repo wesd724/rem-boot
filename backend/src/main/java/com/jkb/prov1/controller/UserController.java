@@ -21,6 +21,11 @@ public class UserController {
         return ResponseEntity.ok(id);
     }
 
+    public ResponseEntity<Boolean> loginUser(@RequestBody UserDto userDto) {
+        boolean login = userService.loginUser(userDto);
+        return ResponseEntity.ok(login);
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteById(id);

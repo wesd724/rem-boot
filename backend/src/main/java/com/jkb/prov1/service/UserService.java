@@ -23,6 +23,15 @@ public class UserService {
         return saveUser.getId();
     }
 
+    public boolean loginUser(UserDto userDto) {
+        String name = userDto.getName();
+        boolean flag = userRepository.existsByName(name);
+        if(!flag) return false;
+
+        String password = userRepository.getPasswordByName(name);
+        return password.equals(userDto.getPassword());
+    }
+
     public void deleteById(Long id) {
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
         userRepository.delete(user);
