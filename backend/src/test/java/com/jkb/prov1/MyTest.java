@@ -69,7 +69,6 @@ public class MyTest {
     @Transactional
     @Rollback(false)
     void ctest2() {
-        postRepository.updateGoodOrBadPoint(1L);
         assertThat(5).isEqualTo(5);
 
     }

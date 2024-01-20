@@ -1,4 +1,4 @@
-package com.jkb.prov1.global.config;
+package com.jkb.prov1.common.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

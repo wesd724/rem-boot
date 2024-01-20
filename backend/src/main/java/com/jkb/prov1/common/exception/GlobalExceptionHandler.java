@@ -1,4 +1,4 @@
-package com.jkb.prov1.global.exception;
+package com.jkb.prov1.common.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleException(Exception e) {
-        log.error("EXCEPTION");
+        log.error(e.getMessage());
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }

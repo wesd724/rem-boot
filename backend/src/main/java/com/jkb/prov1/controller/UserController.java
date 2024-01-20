@@ -1,5 +1,7 @@
 package com.jkb.prov1.controller;
 
+import com.jkb.prov1.common.types.LoginStatus;
+import com.jkb.prov1.dto.LoginDto;
 import com.jkb.prov1.dto.UserDto;
 import com.jkb.prov1.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -15,16 +17,15 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<Long> saveUser(@RequestBody UserDto userDto) {
-        Long id = userService.saveUser(userDto);
-        log.info("유저 저장 완료 ");
-        return ResponseEntity.ok(id);
+    public ResponseEntity<Boolean> saveUser(@RequestBody UserDto userDto) {
+        boolean result = userService.saveUser(userDto);
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping
-    public ResponseEntity<Boolean> loginUser(@RequestBody UserDto userDto) {
-        boolean login = userService.loginUser(userDto);
-        return ResponseEntity.ok(login);
+    public ResponseEntity<LoginDto> loginUser(@RequestBody UserDto userDto) {
+        LoginStatus login = userService.loginUser(userDto);
+        return ResponseEntity.ok(LoginDto.from(login));
     }
 
     @DeleteMapping("{id}")

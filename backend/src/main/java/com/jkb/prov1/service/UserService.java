@@ -1,5 +1,6 @@
 package com.jkb.prov1.service;
 
+import com.jkb.prov1.common.types.LoginStatus;
 import com.jkb.prov1.dto.UserDto;
 import com.jkb.prov1.entity.User;
 import com.jkb.prov1.repository.UserRepository;
@@ -12,7 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    public Long saveUser(UserDto userDto) {
+    public boolean saveUser(UserDto userDto) {
+        if(userRepository.existsByName(userDto.getName())) {
+            return false;
+        }
         User user = User.builder()
                 .name(userDto.getName())
                 .password(userDto.getPassword())
@@ -20,16 +24,19 @@ public class UserService {
                 .build();
 
         User saveUser = userRepository.save(user);
-        return saveUser.getId();
+        return true;
     }
 
-    public boolean loginUser(UserDto userDto) {
+    public LoginStatus loginUser(UserDto userDto) {
         String name = userDto.getName();
-        boolean flag = userRepository.existsByName(name);
-        if(!flag) return false;
-
+        if(!userRepository.existsByName(name)) {
+            return LoginStatus.FAIL;
+        }
         String password = userRepository.getPasswordByName(name);
-        return password.equals(userDto.getPassword());
+        if(password.equals(userDto.getPassword())){
+            return LoginStatus.SUCCESS;
+        }
+        return LoginStatus.INVALID_PASSWORD;
     }
 
     public void deleteById(Long id) {
