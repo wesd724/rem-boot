@@ -1,0 +1,74 @@
+.reply {
+    position: relative;
+    top: 28vh;
+}
+
+.reply .text-input {
+    position:relative;
+    left: 0px;
+    width: 40vmax;
+}
+
+.reply .add-reply {
+    position: absolute;
+    display: inline-block;
+    right: -2px;
+    top: 61px;
+    font-size: 12px;
+    height: 25px;
+}
+
+.reply-list {
+    position: relative;
+    bottom: -11vh;
+    width: 40vmax;
+    padding: 3px;
+    border: 2px solid rgb(94, 72, 72);
+}
+
+.reply-list .reply {
+    position: relative;
+    width: 30vmax;
+    top: 0px;
+    font-size: 15px;
+}
+
+.reply > textarea {
+    resize: none;
+    width: 27vmax;
+    border: 1px solid rgb(99, 110, 110);
+}
+
+.reply-list > div {
+    position: relative;
+    word-break: break-all;
+}
+
+.reply-list .userId {
+    font-size: 12px;
+    padding-top: 5px;
+    color: #7a6464;
+}
+
+.reply-list .update-icon {
+    position: absolute;
+    top: 1px;
+    right: 35px;
+    font-size: 1.5rem;
+    color: #2f31bb;
+}
+
+.reply-list .remove-icon {
+    position: absolute;
+    top: 1px;
+    right: 5px;
+    font-size: 1.5rem;
+    color: #ba3636;
+}
+
+.reply-list .reply-boundary {
+    border: 1px solid gray;
+    width: 40vmax;
+    margin-bottom: 2px;
+    margin-left: -3px;
+}

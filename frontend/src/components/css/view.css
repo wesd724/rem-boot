@@ -1,0 +1,56 @@
+.view {
+    position: relative;
+    width: 40vmax;
+    height: 58vh; 
+    border: 3px solid teal;
+    bottom: 12vh;
+}
+
+.view-count {
+    float: right;
+    margin-top: 2px;
+    margin-right: 25px;
+}
+
+.view .view-boundary {
+    border: 1px solid black;
+    margin-bottom: 2px;
+}
+
+.view-text {
+    position: relative;
+    word-break: break-all;
+    height: 32vh;
+    font-size: 15px;
+    overflow: auto;
+}
+
+.view-text > textarea {
+    resize: none;
+    width: 39vmax;
+    height: 43vh;
+    border: 2px solid rgb(99, 110, 110);
+}
+
+.back-button {
+    top: -45px;
+    left: -5px;
+}
+
+.private-button > button:nth-of-type(1) {
+    color: black;
+    background-color: #66BFBF;
+    position: absolute;
+    top: -45px;
+    right: 93px;
+    padding: 3px 5px;
+}
+
+.private-button > button:nth-of-type(2) {
+    color: black;
+    background-color: #898AA6;
+    position: absolute;
+    top: -45px;
+    right: -2px;
+    padding: 3px 5px;
+}

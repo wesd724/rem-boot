@@ -106,7 +106,6 @@ class Prov1ApplicationTests {
     private Comment saveComment(String reply, Long sequence) {
         Comment comment = Comment
                 .builder()
-                .sequence(sequence)
                 .reply(reply)
                 .build();
         return comment;

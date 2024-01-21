@@ -1,0 +1,27 @@
+.table-container {
+    position: relative;
+    top: 25px;
+}
+
+.td {
+    max-width: 70px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.head {
+    background-color: #3F4E4F;
+}
+
+.head th {
+    color: white;
+}
+
+.head th:nth-child(5) {
+    background-color: #333;
+}
+
+.mui-btn {
+    right: 2px;
+}

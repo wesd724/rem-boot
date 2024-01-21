@@ -1,0 +1,15 @@
+html {
+    background-color: #E7EBF0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+button {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}

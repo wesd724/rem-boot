@@ -62,7 +62,7 @@ public class MyTest {
     @Test
     @Transactional
     void ctest() {
-        Comment comment = commentRepository.findByPost_idAndSequence(9L, 2L);
+        Comment comment = commentRepository.findByPost_idAndId(9L, 2L);
         System.out.println(comment);
     }
 

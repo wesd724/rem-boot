@@ -1,0 +1,47 @@
+.form > b {
+    position: relative;
+    bottom: -15px;
+    left: 1vw;
+}
+
+.title {
+    left: 2vw;
+    width: 25vmax;
+}
+
+.textarea {
+    left: 2vw;
+    width: 45vmax;
+    height: 50px;
+    top: 10px;
+}
+
+.logout-button {
+    top: 20px;
+    width: 85px;
+    right: 20px;
+    padding: 7px 20px;
+}
+
+.write-button {
+    left: 3vw;
+    top: 10px;
+    height: 30px;
+}
+
+.search {
+    bottom: 10px;
+    right: 20px;
+    width: 110px;
+}
+
+.pages {
+    text-align: center;
+    padding-left: 0px;
+}
+
+.page-btn {
+    top: 20px;
+    margin-left: 10px !important;
+    margin-bottom: 10px !important;
+}
