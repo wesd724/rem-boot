@@ -1,9 +1,6 @@
 package com.jkb.prov1.service;
 
-import com.jkb.prov1.dto.PostRequestDto;
-import com.jkb.prov1.dto.PostResponseDto;
-import com.jkb.prov1.dto.RecommendStatusDto;
-import com.jkb.prov1.dto.ViewPostDto;
+import com.jkb.prov1.dto.*;
 import com.jkb.prov1.entity.Info;
 import com.jkb.prov1.entity.Post;
 import com.jkb.prov1.entity.User;
@@ -25,8 +22,8 @@ public class PostService {
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
 
-    public Long savePost(Long userId, PostRequestDto postRequestDto) {
-        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("id not exist"));
+    public Long savePost(PostRequestDto postRequestDto) {
+        User user = userRepository.getByName(postRequestDto.getName());
         Post post = Post.builder()
                 .title(postRequestDto.getTitle())
                 .text(postRequestDto.getText())
@@ -46,13 +43,13 @@ public class PostService {
     }
 
     @Transactional(readOnly = true)
-    public List<PostResponseDto> findByTitleContaining(int page, String title, int length) {
+    public PostSearchResponseDto findByTitleContaining(int page, String title, int length) {
         Page<Post> postPage = postRepository.findByTitleContaining
                 (title,
                         PageRequest.of(page - 1, length,
                                 Sort.by(Sort.Order.desc("id")))
                 );
-        return PostResponseDto.tolist(postPage.getContent());
+        return PostSearchResponseDto.from(postPage);
     }
 
     @Transactional(readOnly = true)

@@ -13,9 +13,9 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping
-    public ResponseEntity<Void> saveComment(@RequestBody CommentRequestDto commentRequestDto) {
-        commentService.saveComment(commentRequestDto);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Long> saveComment(@RequestBody CommentRequestDto commentRequestDto) {
+        Long commentId = commentService.saveComment(commentRequestDto);
+        return ResponseEntity.ok(commentId);
     }
 
     @PatchMapping

@@ -12,12 +12,16 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class CommentResponseDto {
-    private String username;
-    private Long sequence;
+    private String name;
+    private Long commentId;
     private String reply;
 
     public static CommentResponseDto from(Comment comment) {
-        return new CommentResponseDto(comment.getUser().getName(), comment.getSequence(), comment.getReply());
+        return new CommentResponseDto(
+                comment.getUser().getName(),
+                comment.getId(),
+                comment.getReply()
+        );
     }
 
     public static List<CommentResponseDto> tolist(List<Comment> Comments) {

@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CommentRequestDto {
-    private Long userId;
+    private String name;
     private Long postId;
-    private Long sequence;
+    private Long commentId;
     private String reply;
 }

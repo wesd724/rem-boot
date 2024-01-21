@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PostResponseDto {
-    private String username;
+    private String name;
     private Long postId;
     private String title;
     private String text;

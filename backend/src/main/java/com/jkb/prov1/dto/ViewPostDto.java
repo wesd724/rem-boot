@@ -13,12 +13,12 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ViewPostDto {
-    private String username;
+    private String name;
     private Long postId;
     private String title;
     private String text;
     private Info info;
-    private List<CommentResponseDto> commentResponseDto;
+    private List<CommentResponseDto> comments;
 
     public static ViewPostDto from(Post post) {
         return new ViewPostDto(

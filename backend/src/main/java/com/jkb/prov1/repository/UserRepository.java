@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface UserRepository extends JpaRepository<User, Long> {
+    User getByName(String name);
     boolean existsByName(String name);
-
     @Query("select u.password from User u where u.name = :name")
     String getPasswordByName(@Param("name") String name);
 }

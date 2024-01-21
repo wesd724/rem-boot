@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-    Comment findByPost_idAndSequence(Long postId, Long sequence);
+    Comment findByPost_idAndId(Long postId, Long commentId);
 
     @Modifying(clearAutomatically = true)
     @Query("delete from Comment c where c.post.id = :postId")

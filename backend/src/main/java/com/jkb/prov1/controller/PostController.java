@@ -1,9 +1,6 @@
 package com.jkb.prov1.controller;
 
-import com.jkb.prov1.dto.PostRequestDto;
-import com.jkb.prov1.dto.PostResponseDto;
-import com.jkb.prov1.dto.RecommendStatusDto;
-import com.jkb.prov1.dto.ViewPostDto;
+import com.jkb.prov1.dto.*;
 import com.jkb.prov1.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,9 +16,9 @@ import java.util.List;
 public class PostController {
     private final PostService postService;
 
-    @PostMapping("{userId}")
-    public ResponseEntity<Long> savePost(@PathVariable Long userId, @RequestBody PostRequestDto postRequestDto) {
-        Long id = postService.savePost(userId, postRequestDto);
+    @PostMapping
+    public ResponseEntity<Long> savePost(@RequestBody PostRequestDto postRequestDto) {
+        Long id = postService.savePost(postRequestDto);
         return ResponseEntity.ok(id);
     }
 
@@ -32,11 +29,11 @@ public class PostController {
     }
 
     @GetMapping("/s/{page}")
-    public ResponseEntity<List<PostResponseDto>> findByTitleContaining
+    public ResponseEntity<PostSearchResponseDto> findByTitleContaining
             (@PathVariable int page,
              @RequestParam(value = "search", defaultValue = "") String title,
              @RequestParam int length) {
-        List<PostResponseDto> posts = postService.findByTitleContaining(page, title, length);
+        PostSearchResponseDto posts = postService.findByTitleContaining(page, title, length);
         return ResponseEntity.ok(posts);
     }
 
@@ -52,8 +49,8 @@ public class PostController {
         return ResponseEntity.ok(viewPostDto);
     }
 
-    @PutMapping
-    public ResponseEntity<Void> updatePost(@RequestParam Long postId, @RequestBody PostRequestDto postRequestDto) {
+    @PutMapping("{postId}")
+    public ResponseEntity<Void> updatePost(@PathVariable Long postId, @RequestBody PostRequestDto postRequestDto) {
         postService.updatePost(postId, postRequestDto);
         return ResponseEntity.ok().build();
     }

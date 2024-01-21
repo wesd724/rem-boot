@@ -1,6 +1,7 @@
 package com.jkb.prov1;
 
 import com.jkb.prov1.entity.Comment;
+import com.jkb.prov1.entity.Post;
 import com.jkb.prov1.entity.User;
 import com.jkb.prov1.repository.CommentRepository;
 import com.jkb.prov1.repository.PostRepository;
@@ -67,8 +68,9 @@ public class MyTest {
 
     @Test
     @Transactional
-    @Rollback(false)
     void ctest2() {
+        Post p = postRepository.findById(1L).get();
+        System.out.println(p.getUser().getName());
         assertThat(5).isEqualTo(5);
 
     }

@@ -16,9 +16,6 @@ public class Comment {
     private Long id;
 
     @Column(nullable = false)
-    private Long sequence;
-
-    @Column(nullable = false)
     private String reply;
 
     @ManyToOne
