@@ -31,6 +31,7 @@ const InputForm = () => {
     }, []);
 
     const init = () => {
+        if(!username) window.location.replace("/");
         readData(page).then(res => {
             if (res.data.posts.length === 0 && res.data.totalLength > 0) {
                 readData(page - 1).then(res => {
