@@ -6,8 +6,6 @@ import lombok.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
-@Builder
 @ToString
 @Table(name = "comment")
 public class Comment {
@@ -25,6 +23,13 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private Post post;
+
+    @Builder
+    public Comment(String reply, User user, Post post) {
+        this.reply = reply;
+        this.user = user;
+        this.post = post;
+    }
 
     public void update(String reply) {
         this.reply = reply;

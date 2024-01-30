@@ -9,8 +9,6 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
-@Builder
 @ToString
 @Table(name = "post")
 public class Post {
@@ -33,9 +31,16 @@ public class Post {
     private User user;
 
     @OneToMany(mappedBy = "post")
-    @Builder.Default
     @ToString.Exclude
     private List<Comment> commentList = new ArrayList<>();
+
+    @Builder
+    public Post(String title, String text, Info info, User user) {
+        this.title = title;
+        this.text = text;
+        this.info = info;
+        this.user = user;
+    }
 
     public void setUser(User user) {
         this.user = user;

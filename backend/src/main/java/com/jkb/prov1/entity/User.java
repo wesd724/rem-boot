@@ -9,8 +9,6 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
-@Builder
 @ToString
 @Table(name = "user")
 public class User {
@@ -28,14 +26,19 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @Builder.Default
     @ToString.Exclude
     private List<Post> postList = new ArrayList<>();;
 
     @OneToMany(mappedBy = "user")
-    @Builder.Default
     @ToString.Exclude
     private List<Comment> commentList = new ArrayList<>();
+
+    @Builder
+    public User(String name, String password, String email) {
+        this.name = name;
+        this.password = password;
+        this.email = email;
+    }
 
     public void setName(String name)  {
         this.name = name;
