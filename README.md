@@ -15,7 +15,6 @@
 * Spring Boot 
 * Spring Data JPA
 * MySQL
-* 오라클 클라우드 VM
 ---
 
 ### _[사이트 바로가기](http://krsm.p-e.kr/)_

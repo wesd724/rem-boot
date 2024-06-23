@@ -67,12 +67,26 @@ public class MyTest {
     }
 
     @Test
-    @Transactional
+
     void ctest2() {
         Post p = postRepository.findById(1L).get();
-        System.out.println(p.getUser().getName());
-        assertThat(5).isEqualTo(5);
+        transactionTest(p);
+    }
 
+    @Transactional
+    void transactionTest(Post p) {
+        User user = p.getUser();
+        user.setName("testchange");
+        System.out.println(System.identityHashCode(user));
+        //em.clear();
+
+        User user2 = userRepository.findById(1L).get();
+        System.out.println(System.identityHashCode(user2));
+
+        String name = user2.getName();
+        System.out.println(name);
+
+        assertThat(name).isEqualTo(user.getName());
     }
 
 }

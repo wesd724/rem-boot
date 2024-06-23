@@ -47,7 +47,7 @@ const Reply = ({ commentList, postId }) => {
                 return;
             }
             await updateOneReply({ ...data, commentId: index, reply: oneReply });
-            setReplyList(replyList => replyList.filter(value => {
+            setReplyList(replyList => replyList.map(value => {
                 if (value.commentId === index) value.reply = oneReply;
                 return value;
             }))
